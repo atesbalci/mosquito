@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://4btqj1tsqhg4"]
+[gd_scene load_steps=3 format=3 uid="uid://4btqj1tsqhg4"]
 
 [ext_resource type="Script" uid="uid://c82imkawmmlbv" path="res://Scripts/Mosquito.cs" id="1_dnsox"]
 
-[node name="Mosquito" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_dnsox"]
+
+[node name="Mosquito" type="RigidBody3D"]
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 10.0
 script = ExtResource("1_dnsox")
+metadata/Camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_dnsox")
