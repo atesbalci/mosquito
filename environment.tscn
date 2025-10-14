@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://rtbhppw6ptd2"]
+
+[ext_resource type="PackedScene" uid="uid://4btqj1tsqhg4" path="res://mosquito.tscn" id="1_0dwx2"]
+[ext_resource type="Material" uid="uid://dhoyog0icbyjp" path="res://ground.tres" id="2_7b2gm"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wetts"]
+
+[node name="Environment" type="Node3D"]
+
+[node name="Mosquito" parent="." instance=ExtResource("1_0dwx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0)
+mesh = SubResource("QuadMesh_wetts")
+surface_material_override/0 = ExtResource("2_7b2gm")

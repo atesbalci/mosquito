@@ -1,0 +1,24 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Mosquito"
+run/main_scene="uid://rtbhppw6ptd2"
+config/features=PackedStringArray("4.5", "C#")
+config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="Mosquito"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(8.7838623e-07, 0.36846972, 0.13433355, 1)
