@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://75dgnoh41ow5"]
+
+[ext_resource type="PackedScene" uid="uid://ctgj5l0l3lr3g" path="res://Meshes/crackhouse.glb" id="1_5ajm7"]
+
+[sub_resource type="Environment" id="Environment_i8r8g"]
+background_mode = 1
+background_color = Color(0.11708052, 0.2526115, 0.34308442, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.21094576, 0.23290971, 0.32043773, 1)
+ambient_light_energy = 0.85
+ssao_enabled = true
+
+[node name="Crackhouse" type="Node3D"]
+
+[node name="crackhouse" parent="." instance=ExtResource("1_5ajm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20933461, 0.030948997, -0.08584809)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2165186, 0.53129303, -0.6946182)
+light_color = Color(1, 0.8526666, 0.32, 1)
+light_energy = 0.413
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 0.995
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20164758, 0.3470472, 0.3441498)
+light_color = Color(1, 0.95666665, 0.8, 1)
+light_energy = 0.193
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 0.955
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22684109, 0.81120473, 0.02040296)
+light_color = Color(0.69, 0.7881667, 1, 1)
+light_energy = 0.07
+light_specular = 0.0
+omni_range = 1.965
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i8r8g")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1667484, 1.4480923, 3.0816631)
+light_color = Color(0.65, 0.8191666, 1, 1)
+light_energy = 4.06
+shadow_enabled = true
+shadow_bias = 0.04
+omni_range = 5.35
