@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://75dgnoh41ow5"]
+[gd_scene load_steps=7 format=3 uid="uid://75dgnoh41ow5"]
 
 [ext_resource type="PackedScene" uid="uid://ctgj5l0l3lr3g" path="res://Meshes/crackhouse.glb" id="1_5ajm7"]
+[ext_resource type="Material" uid="uid://brgilkjpoag7s" path="res://TV shader/mat_tv.tres" id="2_i8r8g"]
+[ext_resource type="AudioStream" uid="uid://i46b6sn4yv2h" path="res://Audio/fridge_static.wav" id="3_60oqn"]
+[ext_resource type="AudioStream" uid="uid://u045gei28i6h" path="res://Audio/tv_static.wav" id="4_7nwl0"]
+[ext_resource type="AudioStream" uid="uid://cgmetny3dt83h" path="res://Audio/City Street Loop.wav" id="5_7nwl0"]
 
 [sub_resource type="Environment" id="Environment_i8r8g"]
 background_mode = 1
@@ -15,7 +19,15 @@ ssao_enabled = true
 [node name="crackhouse" parent="." instance=ExtResource("1_5ajm7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20933461, 0.030948997, -0.08584809)
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+[node name="tv" parent="crackhouse" index="20"]
+material_override = ExtResource("2_i8r8g")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i8r8g")
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2165186, 0.53129303, -0.6946182)
 light_color = Color(1, 0.8526666, 0.32, 1)
 light_energy = 0.413
@@ -23,28 +35,47 @@ light_specular = 0.0
 shadow_enabled = true
 omni_range = 0.995
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20164758, 0.3470472, 0.3441498)
-light_color = Color(1, 0.95666665, 0.8, 1)
-light_energy = 0.193
+[node name="OmniLight3D4" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1623244, 0.34704724, 0.3663274)
+light_color = Color(0.8, 0.9033333, 1, 1)
+light_energy = 0.065
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 0.955
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+[node name="OmniLight3D5" type="OmniLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22684109, 0.81120473, 0.02040296)
 light_color = Color(0.69, 0.7881667, 1, 1)
 light_energy = 0.07
 light_specular = 0.0
 omni_range = 1.965
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_i8r8g")
-
-[node name="spotlight" type="SpotLight3D" parent="."]
-transform = Transform3D(0.972925, 0.005706862, -0.2310507, 0.028022597, 0.9894072, 0.14243755, 0.22941604, -0.14505565, 0.962459, -1.1667484, 1.4480923, 3.0816631)
+[node name="spotlight" type="SpotLight3D" parent="lights"]
+transform = Transform3D(0.972925, 0.005706847, -0.23105069, 0.028022597, 0.98940706, 0.1424375, 0.22941604, -0.14505564, 0.9624589, -1.1667484, 1.4480923, 3.0816631)
 light_color = Color(0.65, 0.8191666, 1, 1)
 light_energy = 4.06
 shadow_enabled = true
 shadow_blur = 0.505
 spot_angle = 24.65
+
+[node name="audio" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2409407, 0.45985323, -0.7295828)
+stream = ExtResource("3_60oqn")
+volume_db = -20.0
+unit_size = 3.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26277167, 0.25207108, 0.3412273)
+stream = ExtResource("4_7nwl0")
+volume_db = -20.0
+unit_size = 3.0
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74028563, 0.919702, 1.3085067)
+stream = ExtResource("5_7nwl0")
+volume_db = -10.0
+unit_size = 3.0
+
+[editable path="crackhouse"]
