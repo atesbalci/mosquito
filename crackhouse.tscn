@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://75dgnoh41ow5"]
+[gd_scene load_steps=8 format=3 uid="uid://75dgnoh41ow5"]
 
 [ext_resource type="PackedScene" uid="uid://ctgj5l0l3lr3g" path="res://Meshes/crackhouse.glb" id="1_5ajm7"]
 [ext_resource type="Material" uid="uid://brgilkjpoag7s" path="res://TV shader/mat_tv.tres" id="2_i8r8g"]
 [ext_resource type="AudioStream" uid="uid://i46b6sn4yv2h" path="res://Audio/fridge_static.wav" id="3_60oqn"]
+[ext_resource type="Material" uid="uid://bxqt1djuvh0yx" path="res://Meshes/materials/window-alpha.tres" id="3_yhu0s"]
 [ext_resource type="AudioStream" uid="uid://u045gei28i6h" path="res://Audio/tv_static.wav" id="4_7nwl0"]
 [ext_resource type="AudioStream" uid="uid://cgmetny3dt83h" path="res://Audio/City Street Loop.wav" id="5_7nwl0"]
 
@@ -21,6 +22,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20933461, 0.030948997, -0.
 
 [node name="tv" parent="crackhouse" index="20"]
 material_override = ExtResource("2_i8r8g")
+
+[node name="Cube_013" parent="crackhouse" index="40"]
+surface_material_override/1 = ExtResource("3_yhu0s")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i8r8g")
