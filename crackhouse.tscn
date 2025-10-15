@@ -41,10 +41,10 @@ omni_range = 1.965
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i8r8g")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1667484, 1.4480923, 3.0816631)
+[node name="spotlight" type="SpotLight3D" parent="."]
+transform = Transform3D(0.972925, 0.005706862, -0.2310507, 0.028022597, 0.9894072, 0.14243755, 0.22941604, -0.14505565, 0.962459, -1.1667484, 1.4480923, 3.0816631)
 light_color = Color(0.65, 0.8191666, 1, 1)
 light_energy = 4.06
 shadow_enabled = true
-shadow_bias = 0.04
-omni_range = 5.35
+shadow_blur = 0.505
+spot_angle = 24.65
