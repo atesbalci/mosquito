@@ -6,6 +6,9 @@ public partial class Mosquito : RigidBody3D
     
     private float _yaw;
     private float _pitch;
+    
+    public float Acceleration { get; set; }
+    public float MaxVelocity { get; set; }
 
     public Mosquito()
     {
@@ -24,7 +27,7 @@ public partial class Mosquito : RigidBody3D
         float deltaFloat = (float) delta;
         Vector3 velocityVector = Vector3.Zero;
         Quaternion rotation = _camera.GetQuaternion();
-        Vector3 up = rotation * Vector3.Up;
+        Vector3 up = Vector3.Up;
         Vector3 forward = rotation * Vector3.Forward;
         Vector3 right = rotation * Vector3.Right;
         if (Input.IsKeyLabelPressed(Key.W))
@@ -40,7 +43,8 @@ public partial class Mosquito : RigidBody3D
         if (Input.IsKeyLabelPressed(Key.Ctrl))
             velocityVector -= up;
 
-        LinearVelocity += deltaFloat * 100f * velocityVector.Normalized();
+        var newVelocity = LinearVelocity + deltaFloat * Acceleration * velocityVector.Normalized();
+        LinearVelocity = newVelocity.Normalized() * Mathf.Min(MaxVelocity, newVelocity.Length());
     }
 
     public override void _Input(InputEvent @event)

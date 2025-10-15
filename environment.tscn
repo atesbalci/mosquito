@@ -1,11 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://rtbhppw6ptd2"]
+[gd_scene load_steps=11 format=3 uid="uid://rtbhppw6ptd2"]
 
 [ext_resource type="PackedScene" uid="uid://4btqj1tsqhg4" path="res://mosquito.tscn" id="1_0dwx2"]
+[ext_resource type="Script" uid="uid://brig4wsc2w45g" path="res://Scripts/Game.cs" id="1_wetts"]
 [ext_resource type="Material" uid="uid://dhoyog0icbyjp" path="res://ground.tres" id="2_7b2gm"]
+[ext_resource type="Resource" uid="uid://du3yxne8gu72s" path="res://game_rules.tres" id="2_00014"]
+[ext_resource type="Material" uid="uid://dcexu335cm1yp" path="res://suck_area.tres" id="5_g4tgr"]
+[ext_resource type="Material" uid="uid://cmevdiwsd08up" path="res://annoyance_area.tres" id="6_dm4p5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wetts"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4tgr"]
+size = Vector3(1, 1, 0.002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dm4p5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pk5nr"]
+
 [node name="Environment" type="Node3D"]
+script = ExtResource("1_wetts")
+metadata/Mosquito = NodePath("Mosquito")
+metadata/GameRules = ExtResource("2_00014")
 
 [node name="Mosquito" parent="." instance=ExtResource("1_0dwx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -15,7 +29,37 @@ transform = Transform3D(100, 0, 0, 0, -4.371139e-06, 100, 0, -100, -4.371139e-06
 mesh = SubResource("QuadMesh_wetts")
 surface_material_override/0 = ExtResource("2_7b2gm")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_g4tgr")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.755974, 0)
 light_energy = 11.909
 omni_range = 4096.0
+
+[node name="SuckArea" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 5.01, 35.43)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SuckArea"]
+shape = SubResource("BoxShape3D_dm4p5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SuckArea"]
+mesh = SubResource("BoxMesh_pk5nr")
+surface_material_override/0 = ExtResource("5_g4tgr")
+
+[node name="AnnoyanceArea" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 20.385307, 5.01, 35.43)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnnoyanceArea"]
+shape = SubResource("BoxShape3D_dm4p5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnnoyanceArea"]
+mesh = SubResource("BoxMesh_pk5nr")
+surface_material_override/0 = ExtResource("6_dm4p5")
