@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvkpa6shwsas5"]
+
+[ext_resource type="Script" uid="uid://bn2rf03jco8sw" path="res://Scripts/Main.cs" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://rtbhppw6ptd2" path="res://environment.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cpabtmnem5njg" path="res://ui.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_h2yge")
+metadata/Game = NodePath("Environment")
+metadata/UI = NodePath("CanvasLayer/Ui")
+
+[node name="Environment" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Ui" parent="CanvasLayer" instance=ExtResource("2_0xm2m")]
+anchors_preset = 15

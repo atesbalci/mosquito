@@ -11,14 +11,27 @@ config_version=5
 [application]
 
 config/name="Mosquito"
-run/main_scene="uid://rtbhppw6ptd2"
+run/main_scene="uid://bvkpa6shwsas5"
 config/features=PackedStringArray("4.5", "C#")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="Mosquito"
 
+[layer_names]
+
+3d_physics/layer_2="Mosquito"
+3d_physics/layer_3="SuckableArea"
+3d_physics/layer_4="AnnoyanceArea"
+
 [rendering]
 
-environment/defaults/default_clear_color=Color(8.7838623e-07, 0.36846972, 0.13433355, 1)
+environment/defaults/default_clear_color=Color(0.01302145, 0, 0.2608651, 1)
