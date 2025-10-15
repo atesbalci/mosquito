@@ -5,10 +5,12 @@
 [sub_resource type="Compositor" id="Compositor_dnsox"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dnsox"]
+radius = 0.01
 
 [node name="Mosquito" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 13
+collision_layer = 3
+collision_mask = 15
+mass = 0.01
 gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
@@ -20,7 +22,9 @@ metadata/Camera = NodePath("Camera3D")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 compositor = SubResource("Compositor_dnsox")
 current = true
+fov = 90.0
+near = 0.001
+far = 20.88
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_dnsox")

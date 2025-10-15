@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://45p3yg1cuuf0"]
+
+[ext_resource type="PackedScene" uid="uid://bi2433js1fe0i" path="res://Meshes/arrow.glb" id="1_l5ahi"]
+[ext_resource type="Material" uid="uid://bjj0np08d2kfi" path="res://TV shader/mat_arrow.tres" id="2_2ndhl"]
+[ext_resource type="Script" uid="uid://bdj0trvot0wvu" path="res://Scripts/AutoPlay.cs" id="3_acd0x"]
+
+[node name="arrow" instance=ExtResource("1_l5ahi")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2ndhl")
+
+[node name="AnimationPlayer" parent="." index="1"]
+script = ExtResource("3_acd0x")

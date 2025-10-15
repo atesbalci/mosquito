@@ -15,4 +15,3 @@ metadata/UI = NodePath("CanvasLayer/Ui")
 follow_viewport_enabled = true
 
 [node name="Ui" parent="CanvasLayer" instance=ExtResource("2_0xm2m")]
-anchors_preset = 15

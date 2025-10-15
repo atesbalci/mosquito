@@ -6,24 +6,30 @@ public partial class Mosquito : RigidBody3D
     
     private float _yaw;
     private float _pitch;
+    private bool _locked;
     
     public float Acceleration { get; set; }
     public float MaxVelocity { get; set; }
 
-    public Mosquito()
+    public void SetLocked(bool locked)
     {
-        Input.SetMouseMode(Input.MouseModeEnum.Captured);
+        _locked = locked;
+        Input.SetMouseMode(locked ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured);
     }
 
     public override void _Ready()
     {
-        base._Ready();
+        SetLocked(false);
         _camera = GetNode<Camera3D>(GetMeta("Camera").AsString());
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        base._PhysicsProcess(delta);
+        if (_locked)
+        {
+            LinearVelocity = Vector3.Zero;
+            return;
+        }
         float deltaFloat = (float) delta;
         Vector3 velocityVector = Vector3.Zero;
         Quaternion rotation = _camera.GetQuaternion();
@@ -49,7 +55,7 @@ public partial class Mosquito : RigidBody3D
 
     public override void _Input(InputEvent @event)
     {
-        base._Input(@event);
+        if (_locked) return;
         if (@event is InputEventMouseMotion inputMouseMotion)
         {
             OffsetYawAndPitch(-inputMouseMotion.Relative.X * 0.1f, -inputMouseMotion.Relative.Y * 0.1f);

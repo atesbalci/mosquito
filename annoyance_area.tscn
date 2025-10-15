@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxaj7igh2do3b"]
+
+[ext_resource type="Material" uid="uid://cmevdiwsd08up" path="res://annoyance_area.tres" id="1_gkx75"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nt7yb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f3urh"]
+
+[node name="AnnoyanceArea" type="Area3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nt7yb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_f3urh")
+surface_material_override/0 = ExtResource("1_gkx75")

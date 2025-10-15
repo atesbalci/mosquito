@@ -6,31 +6,39 @@ public partial class Game : Node
 {
     private GameRules _gameRules;
     private Mosquito _mosquito;
-    private IList<Area3D> _suckableAreas;
+    private IList<SuckableArea> _suckableAreas;
     private IList<Area3D> _annoyanceAreas;
     private int _enteredSuckableAreaCount;
-    private int _enteredAnnoyanceAreaCount;
+    private Node3D _currentAnnoyanceArea;
     
-    public GameData GameData { get; private set; } = new();
+    public GameData GameData { get; } = new();
 
     public override void _Ready()
     {
-        _suckableAreas = GetChildren().OfType<Area3D>().Where(area => area.GetCollisionLayerValue(3)).ToArray();
+        _suckableAreas = GetChildren().OfType<SuckableArea>().ToArray();
         _annoyanceAreas = GetChildren().OfType<Area3D>().Where(area => area.GetCollisionLayerValue(4)).ToArray();
         _gameRules = GetMeta("GameRules").Obj as GameRules;
         _mosquito = GetNode<Mosquito>(GetMeta("Mosquito").AsNodePath());
         SetSize(0);
-        
-        foreach (var suckableArea in _suckableAreas)
-        {
-            suckableArea.BodyEntered += SuckableAreaOnBodyEntered;
-            suckableArea.BodyExited += SuckableAreaOnBodyExited;
-        }
+
+        SetStage(0);
         
         foreach (var annoyanceArea in _annoyanceAreas)
         {
-            annoyanceArea.BodyEntered += AnnoyanceAreaOnBodyEntered;
-            annoyanceArea.BodyExited += AnnoyanceAreaOnBodyExited;
+            annoyanceArea.BodyEntered += _ => _currentAnnoyanceArea = annoyanceArea;
+            annoyanceArea.BodyExited += _ => _currentAnnoyanceArea = null;
+        }
+    }
+
+    private void SetStage(int stage)
+    {
+        GameData.Stage = stage;
+        foreach (var suckableArea in _suckableAreas)
+        {
+            int suckableAreaStage = suckableArea.GetMeta("SuckStage").AsInt32();
+            bool active = suckableAreaStage == stage;
+            suckableArea.Visible = active;
+            suckableArea.RemainingBlood = active ? (1f / _suckableAreas.Count) : 0f;
         }
     }
 
@@ -42,10 +50,41 @@ public partial class Game : Node
             SetSize(GameData.MosquitoSize + _gameRules.SuckPerSecond * deltaF);
         }
 
-        float annoyanceDiff;
-        if (_enteredAnnoyanceAreaCount > 0)
+        foreach (var suckableArea in _suckableAreas)
         {
-            annoyanceDiff = _gameRules.AnnoyancePerSecond * deltaF;
+            if (suckableArea.IsBeingSucked && suckableArea.RemainingBlood > 0.001f)
+            {
+                float suckAmount = Mathf.Min(suckableArea.RemainingBlood, _gameRules.SuckPerSecond * deltaF);
+                suckableArea.RemainingBlood -= suckAmount;
+                GameData.MosquitoSize += suckAmount;
+                if (suckableArea.RemainingBlood < 0.001f)
+                {
+                    suckableArea.Visible = false;
+                }
+            }
+        }
+
+        if (_suckableAreas.All(area => area.RemainingBlood < 0.001f))
+        {
+            SetStage(GameData.Stage + 1);
+        }
+
+        ApplyAnnoyance(deltaF);
+
+        if (GameData.IsGameOver)
+        {
+            _mosquito.SetLocked(true);
+        }
+    }
+
+    private void ApplyAnnoyance(float deltaF)
+    {
+        float annoyanceDiff;
+        if (_currentAnnoyanceArea != null)
+        {
+            float distNormalized = (_mosquito.GlobalPosition - _currentAnnoyanceArea.GlobalPosition).Length() /
+                                   (_currentAnnoyanceArea.Scale.X * 0.5f);
+            annoyanceDiff = _gameRules.AnnoyancePerSecondCurve.Sample(1f - distNormalized) * deltaF;
         }
         else
         {
@@ -53,30 +92,6 @@ public partial class Game : Node
         }
         
         GameData.Annoyance = Mathf.Clamp(GameData.Annoyance + annoyanceDiff, 0f, 1f);
-    }
-
-    private void SuckableAreaOnBodyEntered(Node3D body)
-    {
-        if (body != _mosquito) return;
-        _enteredSuckableAreaCount++;
-    }
-
-    private void SuckableAreaOnBodyExited(Node3D body)
-    {
-        if (body != _mosquito) return;
-        _enteredSuckableAreaCount--;
-    }
-
-    private void AnnoyanceAreaOnBodyEntered(Node3D body)
-    {
-        if (body != _mosquito) return;
-        _enteredAnnoyanceAreaCount++;
-    }
-
-    private void AnnoyanceAreaOnBodyExited(Node3D body)
-    {
-        if (body != _mosquito) return;
-        _enteredAnnoyanceAreaCount--;
     }
 
     private void SetSize(float size)

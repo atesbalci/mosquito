@@ -12,10 +12,10 @@ public partial class GameRules : Resource
     public Curve DampCurve { get; set; }
     
     [Export]
-    public float SuckPerSecond { get; set; }
+    public Curve AnnoyancePerSecondCurve { get; set; }
     
     [Export]
-    public float AnnoyancePerSecond { get; set; }
+    public float SuckPerSecond { get; set; }
     
     [Export]
     public float AnnoyanceRecoveryPerSecond { get; set; }
