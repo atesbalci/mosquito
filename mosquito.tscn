@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://4btqj1tsqhg4"]
+[gd_scene load_steps=10 format=3 uid="uid://4btqj1tsqhg4"]
 
 [ext_resource type="Script" uid="uid://c82imkawmmlbv" path="res://Scripts/Mosquito.cs" id="1_dnsox"]
 [ext_resource type="PackedScene" uid="uid://qbyeu4rxpf4m" path="res://Meshes/moskito.glb" id="2_jlnsu"]
+[ext_resource type="Script" uid="uid://b018yhcfbv7q1" path="res://Scripts/MosquitoAudio.cs" id="3_s0ny3"]
+[ext_resource type="Resource" uid="uid://iypjqx56yxsv" path="res://audio_parameters.tres" id="4_4aufs"]
+[ext_resource type="AudioStream" uid="uid://bdw1icoqdavrc" path="res://Audio/mosquito.mp3" id="4_nvah4"]
+[ext_resource type="AudioStream" uid="uid://br3uboleo58kr" path="res://Audio/suckin.mp3" id="6_mpfjf"]
+[ext_resource type="AudioStream" uid="uid://drohr3hqebcih" path="res://Audio/Bloodsuckin.wav" id="6_qsgau"]
 
 [sub_resource type="Compositor" id="Compositor_dnsox"]
 
@@ -18,6 +23,7 @@ lock_rotation = true
 linear_damp = 10.0
 script = ExtResource("1_dnsox")
 metadata/Camera = NodePath("Camera3D")
+metadata/Audio = NodePath("Camera3D/AudioListener3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -31,6 +37,23 @@ far = 20.88
 transform = Transform3D(-0.1, 0, 8.742278e-09, 0, 0.1, 0, -8.742278e-09, 0, -0.1, -1.6868384e-09, 0, 0.019295182)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+script = ExtResource("3_s0ny3")
+metadata/AudioParameters = ExtResource("4_4aufs")
+
+[node name="Buzzing" type="AudioStreamPlayer3D" parent="Camera3D/AudioListener3D"]
+stream = ExtResource("4_nvah4")
+attenuation_model = 3
+autoplay = true
+
+[node name="Sucking" type="AudioStreamPlayer3D" parent="Camera3D/AudioListener3D"]
+stream = ExtResource("6_mpfjf")
+attenuation_model = 3
+
+[node name="Music" type="AudioStreamPlayer3D" parent="Camera3D/AudioListener3D"]
+stream = ExtResource("6_qsgau")
+attenuation_model = 3
+volume_db = -10.0
+autoplay = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_dnsox")

@@ -11,6 +11,11 @@ public partial class Mosquito : RigidBody3D
     public float Acceleration { get; set; }
     public float MaxVelocity { get; set; }
 
+    public void Initialize(GameData gameData)
+    {
+        GetNode<MosquitoAudio>(GetMeta("Audio").AsNodePath()).Initialize(gameData);
+    }
+
     public void SetLocked(bool locked)
     {
         _locked = locked;

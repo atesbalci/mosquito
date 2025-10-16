@@ -17,7 +17,7 @@ public partial class UI : Node
     {
         _bloodMeter = GetNode<Range>(GetMeta("BloodMeter").AsNodePath());
         _annoyanceMeter = GetNode<Range>(GetMeta("AnnoyanceMeter").AsNodePath());
-        _gameOverPanel = GetMeta("GameOver").Obj as PackedScene;
+        _gameOverPanel = GetMeta("GameOver").As<PackedScene>();
     }
 
     public override void _Process(double delta)

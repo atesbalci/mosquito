@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://62fd3x8jkj8v"]
+[gd_scene load_steps=5 format=3 uid="uid://62fd3x8jkj8v"]
 
 [ext_resource type="Script" uid="uid://dpgojyx4jf8iq" path="res://Scripts/GameOver.cs" id="1_y26ei"]
+[ext_resource type="AudioStream" uid="uid://dppdsa7v7x2q3" path="res://Audio/Impact_Punch_02.wav" id="2_yxx3c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xapjj"]
 font_size = 80
@@ -45,5 +46,10 @@ custom_minimum_size = Vector2(0, 69.995)
 layout_mode = 2
 theme = SubResource("Theme_xapjj")
 text = "Restart"
+
+[node name="Slap" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_yxx3c")
+attenuation_model = 3
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="OnRestart"]
