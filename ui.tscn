@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpabtmnem5njg"]
+[gd_scene load_steps=8 format=3 uid="uid://cpabtmnem5njg"]
 
 [ext_resource type="Script" uid="uid://dpuhhi16spfxo" path="res://Scripts/UI.cs" id="1_fyqef"]
 [ext_resource type="PackedScene" uid="uid://62fd3x8jkj8v" path="res://game_over.tscn" id="2_m6e0p"]
 [ext_resource type="Texture2D" uid="uid://damu0loq4xf4i" path="res://UI/ui blood bg.PNG" id="3_n5ude"]
+[ext_resource type="PackedScene" uid="uid://8mimiye36bre" path="res://splash.tscn" id="3_y4yjw"]
 [ext_resource type="Texture2D" uid="uid://y43vwudbpif3" path="res://UI/ui blood.PNG" id="4_y4yjw"]
 [ext_resource type="Texture2D" uid="uid://dsm1cyqixw8l" path="res://UI/ui annoy bg.PNG" id="5_waa4j"]
 [ext_resource type="Texture2D" uid="uid://0opul3fia0qh" path="res://UI/ui annoy.PNG" id="6_ok7cu"]
@@ -12,12 +13,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fyqef")
 metadata/BloodMeter = NodePath("BloodMeter")
 metadata/AnnoyanceMeter = NodePath("AnnoyanceMeter")
 metadata/GameOver = ExtResource("2_m6e0p")
+metadata/Splash = ExtResource("3_y4yjw")
 
 [node name="BloodMeter" type="TextureProgressBar" parent="."]
 layout_mode = 1
