@@ -13,7 +13,7 @@ metadata/Mosquito = NodePath("Mosquito")
 metadata/GameRules = ExtResource("2_00014")
 
 [node name="Mosquito" parent="." instance=ExtResource("1_0dwx2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2827694, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70888263, 0.9901651, -1.0708821)
 
 [node name="AnnoyanceArea" parent="." instance=ExtResource("5_dm4p5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1531498, 0.30274418, 0.67276376)
