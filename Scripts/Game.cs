@@ -17,8 +17,9 @@ public partial class Game : Node
     {
         _suckableAreas = GetChildren().OfType<SuckableArea>().ToArray();
         _annoyanceAreas = GetChildren().OfType<Area3D>().Where(area => area.GetCollisionLayerValue(4)).ToArray();
-        _gameRules = GetMeta("GameRules").Obj as GameRules;
+        _gameRules = GetMeta("GameRules").As<GameRules>();
         _mosquito = GetNode<Mosquito>(GetMeta("Mosquito").AsNodePath());
+        _mosquito.Initialize(GameData);
         SetSize(0);
 
         SetStage(0);
@@ -50,6 +51,7 @@ public partial class Game : Node
             SetSize(GameData.MosquitoSize + _gameRules.SuckPerSecond * deltaF);
         }
 
+        GameData.IsSucking = false;
         foreach (var suckableArea in _suckableAreas)
         {
             if (suckableArea.IsBeingSucked && suckableArea.RemainingBlood > 0.001f)
@@ -61,6 +63,8 @@ public partial class Game : Node
                 {
                     suckableArea.Visible = false;
                 }
+                
+                GameData.IsSucking = true;
             }
         }
 
@@ -74,6 +78,7 @@ public partial class Game : Node
         if (GameData.IsGameOver)
         {
             _mosquito.SetLocked(true);
+            GameData.IsSucking = false;
         }
     }
 
@@ -84,14 +89,15 @@ public partial class Game : Node
         {
             float distNormalized = (_mosquito.GlobalPosition - _currentAnnoyanceArea.GlobalPosition).Length() /
                                    (_currentAnnoyanceArea.Scale.X * 0.5f);
-            annoyanceDiff = _gameRules.AnnoyancePerSecondCurve.Sample(1f - distNormalized) * deltaF;
+            annoyanceDiff = _gameRules.AnnoyancePerSecondCurve.Sample(1f - distNormalized);
         }
         else
         {
-            annoyanceDiff = -_gameRules.AnnoyanceRecoveryPerSecond * deltaF;
+            annoyanceDiff = -_gameRules.AnnoyanceRecoveryPerSecond;
         }
-        
-        GameData.Annoyance = Mathf.Clamp(GameData.Annoyance + annoyanceDiff, 0f, 1f);
+
+        GameData.AnnoyanceGenerationRate = Mathf.Max(0f, annoyanceDiff);
+        GameData.Annoyance = Mathf.Clamp(GameData.Annoyance + annoyanceDiff * deltaF, 0f, 1f);
     }
 
     private void SetSize(float size)

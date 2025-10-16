@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://62fd3x8jkj8v"]
+[gd_scene load_steps=5 format=3 uid="uid://62fd3x8jkj8v"]
 
 [ext_resource type="Script" uid="uid://dpgojyx4jf8iq" path="res://Scripts/GameOver.cs" id="1_y26ei"]
+[ext_resource type="AudioStream" uid="uid://dppdsa7v7x2q3" path="res://Audio/Impact_Punch_02.wav" id="2_yxx3c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xapjj"]
 font_size = 80
@@ -8,31 +9,42 @@ font_size = 80
 [sub_resource type="Theme" id="Theme_xapjj"]
 default_font_size = 80
 
-[node name="GameOver" type="Panel"]
+[node name="GameOver" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.3529412)
+script = ExtResource("1_y26ei")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -324.0
-offset_top = -183.0
+offset_top = -181.5
 offset_right = 324.0
-offset_bottom = 183.0
+offset_bottom = 181.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_y26ei")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 54.0
+offset_top = -1.5
 offset_right = -54.0
+offset_bottom = -1.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 178.3)
 layout_mode = 2
 text = "Game Over"
@@ -40,10 +52,15 @@ label_settings = SubResource("LabelSettings_xapjj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="Button" parent="VBoxContainer"]
+[node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 69.995)
 layout_mode = 2
 theme = SubResource("Theme_xapjj")
 text = "Restart"
 
-[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="OnRestart"]
+[node name="Slap" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_yxx3c")
+attenuation_model = 3
+autoplay = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/RestartButton" to="." method="OnRestart"]
