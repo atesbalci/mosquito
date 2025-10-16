@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://45p3yg1cuuf0" path="res://arrow.tscn" id="2_arw83"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nt7yb"]
-radius = 0.2
+radius = 0.4
 
 [node name="SuckableArea" type="Area3D"]
 collision_layer = 4

@@ -69,17 +69,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2409407, 0.45985323, -0.72
 stream = ExtResource("3_60oqn")
 volume_db = -20.0
 unit_size = 3.0
+autoplay = true
+max_distance = 1.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="audio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26277167, 0.25207108, 0.3412273)
 stream = ExtResource("4_7nwl0")
 volume_db = -20.0
 unit_size = 3.0
+autoplay = true
+max_distance = 0.5
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="audio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74028563, 0.919702, 1.3085067)
 stream = ExtResource("5_7nwl0")
-volume_db = -10.0
+volume_db = -20.756
 unit_size = 3.0
+autoplay = true
 
 [editable path="crackhouse"]
