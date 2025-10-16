@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4m1uygltwkbe"
-path.s3tc="res://.godot/imported/crackhouse_crackhouse texture atlas.png-fb40cb069809a582ea889822ac668ee2.s3tc.ctex"
+uid="uid://cppe2qiyfds6f"
+path.s3tc="res://.godot/imported/crackhouse_cracktown buildings_3.png-b9d520ae3d3d2fe0c0b1679a0aa9748b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "900be2dc85684ded64e0f511983530ec"
+"md5": "534e606684d3df1049df93b3205ec956"
 }
 
 [deps]
 
-source_file="res://Meshes/crackhouse_crackhouse texture atlas.png"
-dest_files=["res://.godot/imported/crackhouse_crackhouse texture atlas.png-fb40cb069809a582ea889822ac668ee2.s3tc.ctex"]
+source_file="res://Meshes/crackhouse_cracktown buildings_3.png"
+dest_files=["res://.godot/imported/crackhouse_cracktown buildings_3.png-b9d520ae3d3d2fe0c0b1679a0aa9748b.s3tc.ctex"]
 
 [params]
 

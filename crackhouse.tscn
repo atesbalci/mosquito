@@ -23,7 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20933461, 0.030948997, -0.
 [node name="tv" parent="crackhouse" index="20"]
 material_override = ExtResource("2_i8r8g")
 
-[node name="Cube_013" parent="crackhouse" index="40"]
+[node name="Cube_027" parent="crackhouse" index="40"]
 surface_material_override/1 = ExtResource("3_yhu0s")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -45,6 +45,7 @@ light_color = Color(0.8, 0.9033333, 1, 1)
 light_energy = 0.065
 light_specular = 0.0
 shadow_enabled = true
+shadow_bias = 0.02
 omni_range = 0.955
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="lights"]
