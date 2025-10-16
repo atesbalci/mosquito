@@ -8,8 +8,8 @@ _data = [Vector2(0, 0.5), 0.0, -0.35, 0, 1, Vector2(1, 0.15), -0.35, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_16d51"]
-_data = [Vector2(0, 0.1), 0.0, 0.9, 0, 1, Vector2(1, 1), 0.9, 0.0, 1, 0]
-point_count = 2
+_data = [Vector2(0, 0.1), 0.0, 0.35400832, 0, 1, Vector2(0.4792627, 0.26966298), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4025056, 0.0, 1, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_14nel"]
 _limits = [0.0, 0.5, 0.0, 1.0]
@@ -28,4 +28,4 @@ AccelerationCurve = SubResource("Curve_xjmu7")
 DampCurve = SubResource("Curve_14nel")
 AnnoyancePerSecondCurve = SubResource("Curve_16d51")
 SuckPerSecond = 0.1
-AnnoyanceRecoveryPerSecond = 0.1
+AnnoyanceRecoveryPerSecond = 0.3

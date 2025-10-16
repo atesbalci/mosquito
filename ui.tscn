@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpabtmnem5njg"]
+[gd_scene load_steps=7 format=3 uid="uid://cpabtmnem5njg"]
 
 [ext_resource type="Script" uid="uid://dpuhhi16spfxo" path="res://Scripts/UI.cs" id="1_fyqef"]
 [ext_resource type="PackedScene" uid="uid://62fd3x8jkj8v" path="res://game_over.tscn" id="2_m6e0p"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_xb563"]
+[ext_resource type="Texture2D" uid="uid://damu0loq4xf4i" path="res://UI/ui blood bg.PNG" id="3_n5ude"]
+[ext_resource type="Texture2D" uid="uid://y43vwudbpif3" path="res://UI/ui blood.PNG" id="4_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://dsm1cyqixw8l" path="res://UI/ui annoy bg.PNG" id="5_waa4j"]
+[ext_resource type="Texture2D" uid="uid://0opul3fia0qh" path="res://UI/ui annoy.PNG" id="6_ok7cu"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -19,33 +21,32 @@ metadata/GameOver = ExtResource("2_m6e0p")
 
 [node name="BloodMeter" type="TextureProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -179.0
+offset_top = -200.0
+offset_right = 500.0
 offset_bottom = -100.0
-grow_horizontal = 2
 grow_vertical = 0
 max_value = 1.0
 step = 0.0
 value = 1.0
 nine_patch_stretch = true
-texture_progress = SubResource("CanvasTexture_xb563")
-tint_progress = Color(1, 0, 0, 1)
+texture_under = ExtResource("3_n5ude")
+texture_progress = ExtResource("4_y4yjw")
 
 [node name="AnnoyanceMeter" type="TextureProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -79.0
-grow_horizontal = 2
+offset_top = -102.67999
+offset_right = 500.0
+offset_bottom = -2.6799927
 grow_vertical = 0
 max_value = 1.0
 step = 0.0
 value = 1.0
 nine_patch_stretch = true
-texture_progress = SubResource("CanvasTexture_xb563")
-tint_progress = Color(0, 0.5941612, 0.7269408, 1)
+texture_under = ExtResource("5_waa4j")
+texture_progress = ExtResource("6_ok7cu")
