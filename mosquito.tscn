@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4btqj1tsqhg4"]
+[gd_scene load_steps=11 format=3 uid="uid://4btqj1tsqhg4"]
 
 [ext_resource type="Script" uid="uid://c82imkawmmlbv" path="res://Scripts/Mosquito.cs" id="1_dnsox"]
 [ext_resource type="PackedScene" uid="uid://qbyeu4rxpf4m" path="res://Meshes/moskito.glb" id="2_jlnsu"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bdw1icoqdavrc" path="res://Audio/mosquito.mp3" id="4_nvah4"]
 [ext_resource type="AudioStream" uid="uid://br3uboleo58kr" path="res://Audio/suckin.mp3" id="6_mpfjf"]
 [ext_resource type="AudioStream" uid="uid://drohr3hqebcih" path="res://Audio/Bloodsuckin.wav" id="6_qsgau"]
+[ext_resource type="AudioStream" uid="uid://cjqissjlbtbgb" path="res://Audio/time_to_suck.mp3" id="8_qcnwa"]
 
 [sub_resource type="Compositor" id="Compositor_dnsox"]
 
@@ -53,6 +54,11 @@ attenuation_model = 3
 stream = ExtResource("6_qsgau")
 attenuation_model = 3
 volume_db = -10.0
+autoplay = true
+
+[node name="Intro" type="AudioStreamPlayer3D" parent="Camera3D/AudioListener3D"]
+stream = ExtResource("8_qcnwa")
+attenuation_model = 3
 autoplay = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

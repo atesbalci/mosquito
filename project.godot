@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -34,4 +35,5 @@ project/assembly_name="Mosquito"
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.01302145, 0, 0.2608651, 1)

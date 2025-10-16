@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8riaei6g2jdg"
 path.s3tc="res://.godot/imported/crackhouse_moon mask.png-85b743464700aa6c35bbd3f4da8c012c.s3tc.ctex"
+path.etc2="res://.godot/imported/crackhouse_moon mask.png-85b743464700aa6c35bbd3f4da8c012c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Meshes/crackhouse_moon mask.png"
-dest_files=["res://.godot/imported/crackhouse_moon mask.png-85b743464700aa6c35bbd3f4da8c012c.s3tc.ctex"]
+dest_files=["res://.godot/imported/crackhouse_moon mask.png-85b743464700aa6c35bbd3f4da8c012c.s3tc.ctex", "res://.godot/imported/crackhouse_moon mask.png-85b743464700aa6c35bbd3f4da8c012c.etc2.ctex"]
 
 [params]
 

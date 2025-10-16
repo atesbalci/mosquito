@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2jp3kg748d85"
 path.s3tc="res://.godot/imported/t_tv_noise.png-6ae4fafe0afe1875b657c197a899df7d.s3tc.ctex"
+path.etc2="res://.godot/imported/t_tv_noise.png-6ae4fafe0afe1875b657c197a899df7d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://TV shader/t_tv_noise.png"
-dest_files=["res://.godot/imported/t_tv_noise.png-6ae4fafe0afe1875b657c197a899df7d.s3tc.ctex"]
+dest_files=["res://.godot/imported/t_tv_noise.png-6ae4fafe0afe1875b657c197a899df7d.s3tc.ctex", "res://.godot/imported/t_tv_noise.png-6ae4fafe0afe1875b657c197a899df7d.etc2.ctex"]
 
 [params]
 

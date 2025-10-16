@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://6hgkgg7bccut"
 path.s3tc="res://.godot/imported/crackhouse_window.png-0c73235ee2b9b30243c5e47bb6d6706e.s3tc.ctex"
+path.etc2="res://.godot/imported/crackhouse_window.png-0c73235ee2b9b30243c5e47bb6d6706e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Meshes/crackhouse_window.png"
-dest_files=["res://.godot/imported/crackhouse_window.png-0c73235ee2b9b30243c5e47bb6d6706e.s3tc.ctex"]
+dest_files=["res://.godot/imported/crackhouse_window.png-0c73235ee2b9b30243c5e47bb6d6706e.s3tc.ctex", "res://.godot/imported/crackhouse_window.png-0c73235ee2b9b30243c5e47bb6d6706e.etc2.ctex"]
 
 [params]
 
