@@ -67,34 +67,36 @@ spot_angle = 24.65
 [node name="audio" type="Node3D" parent="."]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="audio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2409407, 0.45985323, -0.7295828)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3186334, 0.45985323, -0.8619448)
 stream = ExtResource("3_60oqn")
-volume_db = -20.0
-unit_size = 3.0
+volume_db = -40.0
 autoplay = true
-max_distance = 1.0
+max_distance = 2.5
+attenuation_filter_cutoff_hz = 12000.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="audio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26277167, 0.25207108, 0.3412273)
 stream = ExtResource("4_7nwl0")
-volume_db = -20.0
-unit_size = 3.0
+volume_db = -35.0
 autoplay = true
-max_distance = 0.5
+max_distance = 0.7
+attenuation_filter_cutoff_hz = 20000.0
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="audio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74028563, 0.919702, 1.3085067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6785875, 0.64747685, 1.2279305)
 stream = ExtResource("5_7nwl0")
-volume_db = -20.756
-unit_size = 3.0
+volume_db = 50.0
+unit_size = 9.0
 autoplay = true
+max_distance = 1.0
+attenuation_filter_cutoff_hz = 4000.0
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="audio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1653903, 0.28374034, 0.70282567)
 stream = ExtResource("7_26s4x")
 volume_db = -10.0
-unit_size = 3.0
 autoplay = true
-max_distance = 1.5
+max_distance = 3.0
+attenuation_filter_cutoff_hz = 3500.0
 
 [editable path="crackhouse"]
