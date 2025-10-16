@@ -31,7 +31,7 @@ compositor = SubResource("Compositor_dnsox")
 current = true
 fov = 90.0
 near = 0.001
-far = 20.88
+far = 100.0
 
 [node name="moskito" parent="Camera3D" instance=ExtResource("2_jlnsu")]
 transform = Transform3D(-0.1, 0, 8.742278e-09, 0, 0.1, 0, -8.742278e-09, 0, -0.1, -1.6868384e-09, 0, 0.019295182)
