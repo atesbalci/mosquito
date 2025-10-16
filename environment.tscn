@@ -16,28 +16,25 @@ metadata/GameRules = ExtResource("2_00014")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2827694, 0)
 
 [node name="AnnoyanceArea" parent="." instance=ExtResource("5_dm4p5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2120494, 0.1845299, 0.7623742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1531498, 0.30274418, 0.67276376)
+visible = false
 
 [node name="Crackhouse" parent="." instance=ExtResource("6_pk5nr")]
 
 [node name="SuckableArea" parent="." instance=ExtResource("6_dm4p5")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.38753092, 0.1840108, 0.6542558)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.121116415, 0.21763456, 0.31139705)
 
 [node name="SuckableArea2" parent="." instance=ExtResource("6_dm4p5")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.43832037, 0.1840108, 0.36940596)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.33422464, 0.12120099, 0.09694363)
 
 [node name="SuckableArea3" parent="." instance=ExtResource("6_dm4p5")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.78735125, 0.1840108, 0.4422259)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.6034419, 0.2142949, 0.19410774)
 metadata/SuckStage = 1
 
 [node name="SuckableArea4" parent="." instance=ExtResource("6_dm4p5")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.7270839, 0.1840108, 0.7004888)
-metadata/SuckStage = 1
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.85734665, 0.42672148, 0.48090285)
+metadata/SuckStage = 2
 
 [node name="SuckableArea5" parent="." instance=ExtResource("6_dm4p5")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.0409114, 0.1840108, 0.7840384)
-metadata/SuckStage = 2
-
-[node name="SuckableArea6" parent="." instance=ExtResource("6_dm4p5")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.1282605, 0.1840108, 0.48104548)
-metadata/SuckStage = 2
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.049492, 0.26740432, 0.51561755)
+metadata/SuckStage = 3
