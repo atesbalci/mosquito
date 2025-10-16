@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b018yhcfbv7q1" path="res://Scripts/MosquitoAudio.cs" id="3_s0ny3"]
 [ext_resource type="Resource" uid="uid://iypjqx56yxsv" path="res://audio_parameters.tres" id="4_4aufs"]
 [ext_resource type="AudioStream" uid="uid://bdw1icoqdavrc" path="res://Audio/mosquito.mp3" id="4_nvah4"]
-[ext_resource type="AudioStream" uid="uid://br3uboleo58kr" path="res://Audio/suckin.mp3" id="6_mpfjf"]
+[ext_resource type="AudioStream" uid="uid://bjimrqem7wq6w" path="res://Audio/suckin.wav" id="6_qcnwa"]
 [ext_resource type="AudioStream" uid="uid://drohr3hqebcih" path="res://Audio/Bloodsuckin.wav" id="6_qsgau"]
 [ext_resource type="AudioStream" uid="uid://cjqissjlbtbgb" path="res://Audio/time_to_suck.mp3" id="8_qcnwa"]
 
@@ -47,7 +47,7 @@ attenuation_model = 3
 autoplay = true
 
 [node name="Sucking" type="AudioStreamPlayer3D" parent="Camera3D/AudioListener3D"]
-stream = ExtResource("6_mpfjf")
+stream = ExtResource("6_qcnwa")
 attenuation_model = 3
 
 [node name="Music" type="AudioStreamPlayer3D" parent="Camera3D/AudioListener3D"]
