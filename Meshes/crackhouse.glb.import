@@ -44,6 +44,11 @@ _subresources={
 "use_external/fallback_path": "res://Meshes/materials/crackhouse.tres",
 "use_external/path": "uid://bhwxs2ainiuar"
 },
+"moon": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Meshes/materials/moon.tres",
+"use_external/path": "uid://dx7ox7asbfy33"
+},
 "tv": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Meshes/materials/tv.tres",
