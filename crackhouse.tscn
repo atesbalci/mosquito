@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://75dgnoh41ow5"]
+[gd_scene load_steps=9 format=3 uid="uid://75dgnoh41ow5"]
 
 [ext_resource type="PackedScene" uid="uid://ctgj5l0l3lr3g" path="res://Meshes/crackhouse.glb" id="1_5ajm7"]
 [ext_resource type="Material" uid="uid://brgilkjpoag7s" path="res://TV shader/mat_tv.tres" id="2_i8r8g"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://bxqt1djuvh0yx" path="res://Meshes/materials/window-alpha.tres" id="3_yhu0s"]
 [ext_resource type="AudioStream" uid="uid://u045gei28i6h" path="res://Audio/tv_static.wav" id="4_7nwl0"]
 [ext_resource type="AudioStream" uid="uid://cgmetny3dt83h" path="res://Audio/City Street Loop.wav" id="5_7nwl0"]
+[ext_resource type="AudioStream" uid="uid://bn02aq3w2hw4n" path="res://Audio/snoring.wav" id="7_26s4x"]
 
 [sub_resource type="Environment" id="Environment_i8r8g"]
 background_mode = 1
@@ -87,5 +88,13 @@ stream = ExtResource("5_7nwl0")
 volume_db = -20.756
 unit_size = 3.0
 autoplay = true
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1653903, 0.28374034, 0.70282567)
+stream = ExtResource("7_26s4x")
+volume_db = -10.0
+unit_size = 3.0
+autoplay = true
+max_distance = 1.5
 
 [editable path="crackhouse"]
