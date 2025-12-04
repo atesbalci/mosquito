@@ -37,3 +37,10 @@ project/assembly_name="Mosquito"
 
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.01302145, 0, 0.2608651, 1)
+
+[shader_globals]
+
+Sucking={
+"type": "float",
+"value": 1.0
+}

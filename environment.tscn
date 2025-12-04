@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bgikhlwsk0kj5" path="res://suckable_area.tscn" id="6_dm4p5"]
 [ext_resource type="PackedScene" uid="uid://75dgnoh41ow5" path="res://crackhouse.tscn" id="6_pk5nr"]
 
-[node name="Environment" type="Node3D"]
+[node name="Environment" type="SubViewport"]
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1600, 900)
+render_target_update_mode = 4
 script = ExtResource("1_wetts")
 metadata/Mosquito = NodePath("Mosquito")
 metadata/GameRules = ExtResource("2_00014")
