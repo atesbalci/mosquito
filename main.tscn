@@ -1,23 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvkpa6shwsas5"]
+[gd_scene load_steps=8 format=3 uid="uid://bvkpa6shwsas5"]
 
 [ext_resource type="Script" uid="uid://bn2rf03jco8sw" path="res://Scripts/Main.cs" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://rtbhppw6ptd2" path="res://environment.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cpabtmnem5njg" path="res://ui.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cxv0wq6n5uj6e" path="res://viewport_texture.tres" id="3_1bvp3"]
-[ext_resource type="Shader" uid="uid://0rbmctpvb3er" path="res://Shaders/sucking.tres" id="3_lquwl"]
+[ext_resource type="Shader" uid="uid://0rbmctpvb3er" path="res://Shaders/screen.tres" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://bgdxof507gdga" path="res://Scripts/GameStateVisualizer.cs" id="5_7mycd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
 resource_local_to_scene = true
 shader = ExtResource("3_lquwl")
 shader_parameter/Texture = ExtResource("3_1bvp3")
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("_game", "_ui")]
 script = ExtResource("1_h2yge")
-metadata/Game = NodePath("Environment")
-metadata/UI = NodePath("CanvasLayer/Ui")
+_game = NodePath("Environment")
+_ui = NodePath("CanvasLayer/Ui")
 
-[node name="Environment" parent="." instance=ExtResource("1_ig7tw")]
-handle_input_locally = false
+[node name="Environment" parent="." node_paths=PackedStringArray("_visualizer") instance=ExtResource("1_ig7tw")]
+_visualizer = NodePath("../CanvasLayer/Screen")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -29,6 +30,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("5_7mycd")
 
 [node name="Ui" parent="CanvasLayer" instance=ExtResource("2_0xm2m")]
 mouse_filter = 1

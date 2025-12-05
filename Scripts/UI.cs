@@ -53,6 +53,7 @@ public partial class UI : Node
     private void DespawnSplash()
     {
         if (_splash == null) return;
-        RemoveChild(_splash);
+        _splash.QueueFree();
+        _splash = null;
     }
 }

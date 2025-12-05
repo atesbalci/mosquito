@@ -4,22 +4,25 @@ using Godot;
 
 public partial class Game : Node
 {
+    [Export] private GameStateVisualizer _visualizer;
+    
     private GameRules _gameRules;
-    private Mosquito _mosquito;
     private IList<SuckableArea> _suckableAreas;
     private IList<Area3D> _annoyanceAreas;
     private int _enteredSuckableAreaCount;
     private Node3D _currentAnnoyanceArea;
     
     public GameData GameData { get; } = new();
+    public Mosquito Mosquito { get; private set; }
 
     public override void _Ready()
     {
         _suckableAreas = GetChildren().OfType<SuckableArea>().ToArray();
         _annoyanceAreas = GetChildren().OfType<Area3D>().Where(area => area.GetCollisionLayerValue(4)).ToArray();
         _gameRules = GetMeta("GameRules").As<GameRules>();
-        _mosquito = GetNode<Mosquito>(GetMeta("Mosquito").AsNodePath());
-        _mosquito.Initialize(GameData);
+        Mosquito = GetNode<Mosquito>(GetMeta("Mosquito").AsNodePath());
+        Mosquito.Initialize(GameData);
+        _visualizer.Initialize(GameData);
         SetSize(0);
 
         SetStage(0);
@@ -77,7 +80,7 @@ public partial class Game : Node
 
         if (GameData.IsGameOver)
         {
-            _mosquito.SetLocked(true);
+            Mosquito.SetLocked(true);
             GameData.IsSucking = false;
         }
     }
@@ -87,7 +90,7 @@ public partial class Game : Node
         float annoyanceDiff;
         if (_currentAnnoyanceArea != null)
         {
-            float distNormalized = (_mosquito.GlobalPosition - _currentAnnoyanceArea.GlobalPosition).Length() /
+            float distNormalized = (Mosquito.GlobalPosition - _currentAnnoyanceArea.GlobalPosition).Length() /
                                    (_currentAnnoyanceArea.Scale.X * 0.5f);
             annoyanceDiff = _gameRules.AnnoyancePerSecondCurve.Sample(1f - distNormalized);
         }
@@ -104,8 +107,8 @@ public partial class Game : Node
     {
         size = Mathf.Clamp(size, 0f, 1f);
         GameData.MosquitoSize = size;
-        _mosquito.Acceleration = _gameRules.AccelerationCurve.Sample(size);
-        _mosquito.MaxVelocity = _gameRules.MaxVelocityCurve.Sample(size);
-        _mosquito.LinearDamp = _gameRules.DampCurve.Sample(size);
+        Mosquito.Acceleration = _gameRules.AccelerationCurve.Sample(size);
+        Mosquito.MaxVelocity = _gameRules.MaxVelocityCurve.Sample(size);
+        Mosquito.LinearDamp = _gameRules.DampCurve.Sample(size);
     }
 }
